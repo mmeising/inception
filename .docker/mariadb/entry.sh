@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS ${MARIADB_NAME};" \
+sleep 3 && mysql -u root -e "CREATE DATABASE IF NOT EXISTS ${MARIADB_NAME};" \
     && mysql -u root -e "CREATE USER IF NOT EXISTS '${MARIADB_USER}'@'localhost' IDENTIFIED BY '${MARIADB_PWD}';" \
     && mysql -u root -e "GRANT ALL PRIVILEGES ON ${MARIADB_NAME}.* TO '${MARIADB_USER}'@'localhost' WITH GRANT OPTION;" \
     && mysql -u root -e "CREATE USER IF NOT EXISTS '${MARIADB_USER}'@'%' IDENTIFIED BY '${MARIADB_PWD}';" \
