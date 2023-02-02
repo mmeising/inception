@@ -1,4 +1,5 @@
 all:
+	docker compose build --no-cache
 	docker compose up -d
 
 ps:
@@ -9,7 +10,7 @@ down:
 
 del_vol:
 	docker compose down --rmi all --remove-orphans -v
-	sudo docker system prune -a
+	sudo docker system prune -a --volumes
 	sudo rm -rf /home/mmeising/volumes/wp_data/*
 	sudo rm -rf /home/mmeising/volumes/db_data/*
 

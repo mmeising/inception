@@ -10,18 +10,14 @@ services:
     build:
       context: ./.docker/nginx
       dockerfile: Dockerfile
-    # working_dir: /var/www/nginx
     # image: nginx
     container_name: nginx
     ports:
-      # - 80:80
       - 443:443
     networks:
       - networkname
     volumes:
       - wp_data:/var/www/wordpress
-      # - ./src:/var/www/nginx
-      # - ./.docker/nginx/conf.d:/etc/nginx/conf.d
     restart: unless-stopped
     depends_on:
       - wordpress
