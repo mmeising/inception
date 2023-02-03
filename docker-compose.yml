@@ -10,7 +10,7 @@ services:
     build:
       context: ./.docker/nginx
       dockerfile: Dockerfile
-    # image: nginx
+    image: nginx
     container_name: nginx
     ports:
       - 443:443
@@ -28,7 +28,7 @@ services:
       context: ./.docker/wordpress
       dockerfile: Dockerfile
     working_dir: /var/www/wordpress
-    # image: wordpress
+    image: wordpress
     container_name: wordpress
     networks:
       - networkname
@@ -50,7 +50,7 @@ services:
         - MARIADB_USER=${MARIADB_USER}
         - MARIADB_PWD=${MARIADB_PWD}
         - MARIADB_ROOT_PWD=${MARIADB_ROOT_PWD}
-   # image: mariadb
+    image: mariadb
     container_name: mariadb
     networks:
       - networkname
