@@ -1,5 +1,5 @@
 all:
-	sleep 3 && docker compose build --no-cache
+	docker compose build --no-cache
 	docker compose up -d
 
 ps:
@@ -28,6 +28,3 @@ del:
 re: del all
 
 re_vol: del_vol all
-
-#define('WP_HOME','https://mmeising.42.fr');
-#define('WP_SITEURL','https://mmeising.42.fr');
