@@ -6,7 +6,7 @@ RUN apk --update --upgrade add --no-cache mysql mysql-client
 RUN rm -rf /etc/mysql/mariadb.conf.d/50-server.conf
 COPY ./mariadb.conf /etc/mysql/mariadb.conf.d/50-server.conf
 
-#do i need the next line?
+# stop error log message for nonexistant directory
 RUN mkdir -p /auth_pam_tool_dir/auth_pam_tool
 
 RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql --basedir=/usr
@@ -14,10 +14,6 @@ RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql --basedir=/usr
 RUN echo [mysqld]               >> /etc/my.cnf \
     && echo skip-networking=0   >> /etc/my.cnf \
     && echo skip-bind-address   >> /etc/my.cnf
-
-# RUN echo [mysqld]          >> /etc/my.cnf
-# RUN echo skip-networking=0 >> /etc/my.cnf
-# RUN echo skip-bind-address >> /etc/my.cnf
 
 ARG MARIADB_NAME
 ARG MARIADB_USER
@@ -36,11 +32,4 @@ RUN mysqld_safe --user=mysql --datadir=/var/lib/mysql & sleep 3  \
 
 EXPOSE 3306
 
-# COPY entry.sh /usr/local/bin/entry.sh
-# RUN chmod +x /usr/local/bin/entry.sh
-
-# ENTRYPOINT ["/usr/local/bin/entry.sh"]
-
 ENTRYPOINT [ "mysqld_safe" ]
-
-#mysql --defaults-extra-file=/etc/mysql/mariadb.conf.d/50-server.conf
