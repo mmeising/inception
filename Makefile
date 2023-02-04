@@ -26,3 +26,14 @@ del:
 re: del all
 
 re_vol: del_vol all
+
+ssh:
+	sudo apt-get update
+	sudo apt-get install openssh-server
+	sudo service ssh status
+
+ip:
+	sudo apt install net-tools
+	ifconfig | grep "inet "
+
+.PHONY: all ps down up del_vol del re re_vol ssh ip
