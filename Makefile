@@ -74,6 +74,7 @@ docker:
 open:
 	@echo 'this should only be executed form the vm'
 	xdg-open https://mmeising.42.fr
+	@echo 'don't forget to fill the .env file with credentials of your choice!'
 
 .PHONY: all ps down up del_vol del re re_vol prep ssh ip docker open
 #sudo /usr/bin/lubuntu-upgrader --full-upgrade
