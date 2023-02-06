@@ -13,6 +13,9 @@ ps:
 	sudo docker volume ls
 	sudo docker network ls
 
+exec:
+	cd srcs/ && sudo docker compose exec mariadb sh
+
 down:
 	sudo docker compose -f srcs/docker-compose.yml down
 
@@ -20,8 +23,8 @@ up:
 	sudo docker compose -f srcs/docker-compose.yml up -d
 
 clean:
-	sudo docker stop $(DOCKER_PS)		|| echo "nothing to stop"
-	sudo docker rm $(DOCKER_PS)			|| echo "nothing to rm"
+	sudo docker stop $(DOCKER_PS)		|| echo "no container to stop"
+	sudo docker rm $(DOCKER_PS)			|| echo "no container to rm"
 	sudo docker rmi -f $(DOCKER_IMAGES)	|| echo "no image to rm"
 	sudo docker volume rm $(VOL_LS)		|| echo "no volume to rm"
 	sudo docker network rm $(NW_LS)		|| echo "no network to rm"
@@ -43,7 +46,6 @@ del:
 re: del all
 
 re_vol: del_vol all
-
 
 # The following part is only for the first installation:
 
