@@ -14,7 +14,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 EXPOSE 9000
 
-# maybe can save next line later on
 WORKDIR /var/www/wordpress
 RUN wp core download --allow-root
 COPY entry.sh /usr/local/bin/entry.sh

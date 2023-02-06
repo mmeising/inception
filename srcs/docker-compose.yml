@@ -70,7 +70,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: "/home/mmeising/volumes/wp_data"
+      device: "/home/mmeising/data/wp_data"
 
   # MariaDB
   mariadb_data:
@@ -78,4 +78,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: "/home/mmeising/volumes/db_data"
+      device: "/home/mmeising/data/db_data"
